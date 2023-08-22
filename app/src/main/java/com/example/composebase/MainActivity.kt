@@ -111,11 +111,14 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 }
-
                 composable("welcome") {
                     WelcomeFragment(email) // email'i WelcomeFragment'a iletiyoruz
                 }
+                composable("fotograf") {
+                    FotografFragment()
+                }
             }
+
         }
     }
     fun isValidEmail(email: String): Boolean {

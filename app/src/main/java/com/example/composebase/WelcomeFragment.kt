@@ -1,6 +1,7 @@
 package com.example.composebase
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,29 +13,54 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-
-
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun WelcomeFragment(email: String) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        // GIF dosyasının URL'sini belirtin
-        val gifResId = R.drawable.compose
 
-        // GIF'i görüntüleyin
-        Image(
-            painter = painterResource(id = gifResId),
-            contentDescription = "Hoşgeldiniz resmi",
-            modifier = Modifier.size(200.dp) // Resim boyutunu ayarlayabilirsiniz
-        )
+    val navController = rememberNavController()
 
-        Text("Hoşgeldiniz , $email!")
+    NavHost(navController, startDestination = "main") {
+        composable("main") {
+            FotografFragment()
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                // GIF dosyasının URL'sini belirtin
+                val gifResId = R.drawable.compose
+
+                Image(
+                    painter = painterResource(id = gifResId),
+                    contentDescription = "Hoşgeldiniz resmi",
+                    modifier = Modifier
+                        .size(200.dp)
+                )
+
+                Text(
+                    text = "Hoşgeldiniz, $email!",
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+
+                Text(
+                    text = "Resimleri Görüntüle",
+                    modifier = Modifier
+                        .padding(bottom = 15.dp)
+                        .clickable {
+                            navController.navigate("fotograf")
+                        }
+                )
+            }
+        }
+        composable("fotograf") {
+            FotografFragment() // FotografFragment'ı burada çağırıyoruz
+        }
     }
 }
+
 
