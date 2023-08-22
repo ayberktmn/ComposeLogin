@@ -34,7 +34,7 @@ fun WelcomeFragment(email: String) {
             modifier = Modifier.size(200.dp) // Resim boyutunu ayarlayabilirsiniz
         )
 
-        Text("Hoşgeldiniz, $email!")
+        Text("Hoşgeldiniz , $email!")
     }
 }
 
