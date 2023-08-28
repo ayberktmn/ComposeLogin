@@ -1,14 +1,19 @@
 package com.example.composebase
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 
 
@@ -24,8 +29,27 @@ fun FotografFragment() {
     ) {
         Text(
             text = "Fotoğraflar",
-            modifier = Modifier.padding(bottom = 8.dp)
+            modifier = Modifier.padding(bottom = 8.dp),
+            fontSize = 20.sp
         )
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Image(
+                modifier = Modifier
+                    .padding(top = 16.dp, bottom = 15.dp),
+                painter = painterResource(R.drawable.android),
+                contentDescription = "Hoşgeldiniz resmi",
+
+            )
+            Image(
+                modifier = Modifier
+                    .padding(top = 16.dp, bottom = 15.dp),
+                painter = painterResource(R.drawable.game),
+                contentDescription = "Hoşgeldiniz resmi",
+            )
+        }
     }
 }
 

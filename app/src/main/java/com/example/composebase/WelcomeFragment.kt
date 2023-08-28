@@ -1,18 +1,22 @@
 package com.example.composebase
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -24,7 +28,7 @@ fun WelcomeFragment(email: String) {
 
     NavHost(navController, startDestination = "main") {
         composable("main") {
-            FotografFragment()
+
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -43,18 +47,31 @@ fun WelcomeFragment(email: String) {
                 )
 
                 Text(
-                    text = "Hoşgeldiniz, $email!",
+                    text = "Hoşgeldiniz, $email",
+                    fontSize = 18.sp,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
 
-                Text(
-                    text = "Resimleri Görüntüle",
+                Box(
                     modifier = Modifier
-                        .padding(bottom = 15.dp)
+                        .padding(top = 16.dp, bottom = 15.dp)
                         .clickable {
                             navController.navigate("fotograf")
                         }
-                )
+                        .background(
+                            color = androidx.compose.ui.graphics.Color.Black,
+                            shape = RoundedCornerShape(10.dp),
+                        )
+                        .padding(16.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Resimleri Görüntüle",
+                        fontSize = 20.sp,
+                        color = androidx.compose.ui.graphics.Color.White,
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+                }
             }
         }
         composable("fotograf") {
