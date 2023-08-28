@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -32,25 +33,49 @@ fun FotografFragment() {
             modifier = Modifier.padding(bottom = 8.dp),
             fontSize = 20.sp
         )
-        Row(
+        Column(
             modifier = Modifier
-                .padding(top = 16.dp, bottom = 15.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-
+                .padding(top = 16.dp, bottom = 15.dp)
+                .fillMaxWidth()
         ) {
-            Image(
-
-                painter = painterResource(R.drawable.android),
-                contentDescription = "Hoşgeldiniz resmi",
+            Row(
                 modifier = Modifier
-                    .size(200.dp)
-            )
-            Image(
-                painter = painterResource(R.drawable.game),
-                contentDescription = "Hoşgeldiniz resmi",
+                    .fillMaxWidth()
+                    .padding(end = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.android),
+                    contentDescription = "Hoşgeldiniz resmi",
+                    modifier = Modifier
+                        .size(200.dp)
+                )
+                Image(
+                    painter = painterResource(R.drawable.game),
+                    contentDescription = "Hoşgeldiniz resmi",
+                    modifier = Modifier
+                        .size(200.dp)
+                )
+            }
+            Row(
                 modifier = Modifier
-                    .size(200.dp)
-            )
+                    .fillMaxWidth()
+                    .padding(start = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.game),
+                    contentDescription = "Başka bir resim",
+                    modifier = Modifier
+                        .size(200.dp)
+                )
+                Image(
+                    painter = painterResource(R.drawable.android),
+                    contentDescription = "Bir diğer resim",
+                    modifier = Modifier
+                        .size(200.dp)
+                )
+            }
         }
     }
 }
