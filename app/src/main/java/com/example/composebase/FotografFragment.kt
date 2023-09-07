@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 
-
 @Composable
 fun FotografFragment() {
     val navController = rememberNavController()
@@ -71,6 +70,25 @@ fun FotografFragment() {
                 )
                 Image(
                     painter = painterResource(R.drawable.android),
+                    contentDescription = "Bir diğer resim",
+                    modifier = Modifier
+                        .size(200.dp)
+                )
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.android),
+                    contentDescription = "Başka bir resim",
+                    modifier = Modifier
+                        .size(200.dp)
+                )
+                Image(
+                    painter = painterResource(R.drawable.game),
                     contentDescription = "Bir diğer resim",
                     modifier = Modifier
                         .size(200.dp)
